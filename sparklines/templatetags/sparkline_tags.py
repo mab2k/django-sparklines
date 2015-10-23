@@ -52,7 +52,7 @@ def queryset_sparkline(queryset, date_field,
 
 @register.inclusion_tag('sparklines/sparkline.html')
 def sparkline(sparkline_list, options={'type': 'bar'}):
-    options = mark_safe(simplejson.dumps(options))
+    options = mark_safe(json.dumps(options))
     sparkline_type = 'list'
     sparkline.counter += 1
     counter = sparkline.counter
