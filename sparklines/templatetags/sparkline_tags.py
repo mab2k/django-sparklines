@@ -10,7 +10,7 @@ from sparklines.util import get_object_date_count_list
 from django.conf import settings
 
 try:
-    from django.utils import simplejson
+    from django.utils import simplejson as json
 except ImportError:
     import json
 
@@ -29,7 +29,7 @@ def _queryset_sparkline(queryset, date_field, options={}, *args, **kwargs):
     sparkline_type = 'queryset'
     counter = _queryset_sparkline.counter
     module_name = queryset.model._meta.module_name
-    options = mark_safe(simplejson.dumps(options))
+    options = mark_safe(json.dumps(options))
     sparkline_list = get_object_date_count_list(queryset,
                                                 date_field, *args, **kwargs)
 
